@@ -21,13 +21,15 @@
 	$date = getDate();
 	$date = $date[0];
 
-	$makePost = "INSERT INTO post VALUES($currentPost, '$poster', '$title', '$content' $date);";
+	$makePost = "INSERT INTO post VALUES($currentPost, '$poster', '$title', '$content', $date);";
 	$conn->query($makePost);
 	$conn->query("COMMIT;");
 
 	//Update the post number. This gives us "unique" posts for later.
-	$currentPost = $currentPost + 1;
-	$updateCurrentPost = "UPDATE admin SET currentPost = " . $currentPost . " WHERE name = 'Admin';";
+	$nextPost = $currentPost + 1;
+	$updateCurrentPost = "UPDATE admin SET currentPost = " . $nextPost . " WHERE name = 'Admin';";
 	$conn->query($updateCurrentPost);
 	$conn->query("COMMIT;");
+
+	header("Location: http://www.cis.gvsu.edu/~lamard/Forum/Post.php?postId=$currentPost");	
 ?>
