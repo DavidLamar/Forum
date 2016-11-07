@@ -1,7 +1,7 @@
 <html>
 
 	<body>
-		<?php include "Header/php"?>
+		<?php include "Header.php"?>
 		<form id="signup" method="POST" action="/~lamard/Forum/scripts/CreateUser.php">
 			<div>
 				<div>
