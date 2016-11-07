@@ -1,8 +1,8 @@
 <html>
 
 	<body>
-
-		<form id="signup" method="POST" action="CreateUser.php">
+		<?php include "Header/php"?>
+		<form id="signup" method="POST" action="/~lamard/Forum/scripts/CreateUser.php">
 			<div>
 				<div>
 					Username: <input type="text" name="username"/>

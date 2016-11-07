@@ -1,3 +1,5 @@
+<?php include 'Header.php'; ?>
+
 <html>
 
 	<body>

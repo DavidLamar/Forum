@@ -1,6 +1,3 @@
-<?php
-	session_start();
-?>
 
 <html>
 
@@ -8,15 +5,6 @@
 		body {
 			margin: 0;
 			padding: 0;
-		}
-
-		.header {
-			box-sizing: border-box;
-			position: relative;
-			padding: 10px;
-			width: 100%;
-			height: 70px;
-			background-color: red;
 		}
 
 		.logo-container {
@@ -48,30 +36,17 @@
 			border-color: black;
 			border-style: solid;
 			padding: 5px;
+			margin-bottom: 2px;
 			box-sizing: border-box;
 		}
 
 	</style>
 
 	<body>
-		<div class="header">
-			<div class="logo-container">
-				<span class="logo">Logo</span>
-			</div>
-			<div class="user-info">
-				<?php
-					if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
-						echo "Hello " . $_SESSION["username"] . ", <a href='Logout.php'>Log out?</a>";
-					} else {
-						echo "<a href='Login.html'>Log In</a> | <a href='Signup.html'>Sign Up</a>";
-					}	
-				?>
-			</div>
-		</div>
-
+		<?php include 'Header.php'; ?>
 		<div class="content">
 			<div class='nav-bar'>
-				<a href="MakePost.html">Make Post</a>
+				<a href="MakePost.php">Make Post</a>
 			</div>
 			<hr>
 
@@ -87,13 +62,14 @@
 	                        }
 
 	                        $postId = mysql_real_escape_string($_GET['postId']);
-	                        $postSelect = "SELECT * FROM post;";
+	                        $postSelect = "SELECT * FROM post ORDER BY postid DESC;";
 	                        $result = $conn->query($postSelect);
 				$maxResults = 50;
 				for($i = 0; $i < $maxResults; $i++) {
 					$currentPost = $result->fetch_assoc();
+					$currentPostId = $currentPost["postid"];
 					if(isset($currentPost)){
-						echo "<div class='post-block'>" . $currentPost["title"] . "</div>";
+						echo "<div class='post-block' value='$currentPostId'>" . $currentPost["title"] . "</div>";
 					}
 				} 
 			?>
