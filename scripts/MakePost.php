@@ -9,6 +9,8 @@
 <body>
 <?php
 	include "Header.php";
+	session_start();
+	$username = $_SESSION["username"];
 	$servername = "cis.gvsu.edu";
 	$dbusername = "lamard";
 	$dbpassword = "lamard7742";
@@ -30,8 +32,8 @@
 	$date = getDate();
 	$date = $date[0];
 
-	if(!isset($username) || !isset($_POST["logged_in"])){
-		header("Location: http://www.cis.gvsu.edu/~lamard/Forum/Login.php");
+	if(!isset($username) || !isset($_SESSION["logged_in"])){
+		//header("Location: http://www.cis.gvsu.edu/~lamard/Forum/Login.php");
 		exit();	
 	}
 	

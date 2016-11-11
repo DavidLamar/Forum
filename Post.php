@@ -27,6 +27,38 @@
 
 		
 		?>
+		<hr>
+			<form action="/~lamard/Forum/scripts/MakeComment.php" method="post">
+				<div><label>Enter a comment:</label></div>
+				<div>
+					<textarea width="100%" name="comment"></textarea>
+					<input type='hidden' value=<?php echo "$postId"?> name="postId"></input>
+					<button type="submit">Post Comment</button>
+				</div>
+			</form>
+
+		<hr>
+		<?php
+			$servername = "cis.gvsu.edu";
+                        $dbusername = "lamard";
+                        $dbpassword = "lamard7742";
+                        $dbname = "lamard";
+
+                        $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+                        if($conn->connect_error) {
+                                die("Connection Failed");
+                        }
+
+                        $commentSelect = "SELECT * FROM comment WHERE postId=$postId ORDER BY date DESC;";
+                        $result = $conn->query($commentSelect);
+			$comment = $result->fetch_assoc();
+                        while(isset($comment)) {
+                                $currentComment = $comment["content"];
+                                echo "<div>$currentComment</div>";
+				$comment = $result->fetch_assoc();
+                        }
+
+		?>
 	</body>
 
 </html>
