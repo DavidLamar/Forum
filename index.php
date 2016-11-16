@@ -52,24 +52,26 @@
 
 			<?php
 				$servername = "cis.gvsu.edu";
-	                        $dbusername = "lamard";
-	                        $dbpassword = "lamard7742";
-	                        $dbname = "lamard";
-	
-	                        $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
-	                        if($conn->connect_error) {
-	                                die("Connection Failed");
-	                        }
+				$dbusername = "lamard";
+				$dbpassword = "lamard7742";
+				$dbname = "lamard";
 
-	                        $postId = mysql_real_escape_string($_GET['postId']);
-	                        $postSelect = "SELECT * FROM post ORDER BY postid DESC;";
-	                        $result = $conn->query($postSelect);
+				$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+				if($conn->connect_error) {
+						die("Connection Failed");
+				}
+
+				$postId = mysql_real_escape_string($_GET['postId']);
+				$postSelect = "SELECT * FROM post ORDER BY postid DESC;";
+				$result = $conn->query($postSelect);
 				$maxResults = 50;
 				for($i = 0; $i < $maxResults; $i++) {
 					$currentPost = $result->fetch_assoc();
 					$currentPostId = $currentPost["postid"];
 					if(isset($currentPost)){
-						echo "<div class='post-block' value='$currentPostId'>" . $currentPost["title"] . "</div>";
+						echo "<div class='post-block' value='$currentPostId'>" .
+						$currentPost["title"] . " <a href='ViewPost.php?postId='$currentPostId'>
+						 View</a></div>";
 					}
 				} 
 			?>
