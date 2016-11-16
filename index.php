@@ -1,4 +1,3 @@
-
 <html>
 
 	<style>
@@ -58,7 +57,7 @@
 
 				$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 				if($conn->connect_error) {
-						die("Connection Failed");
+					die("Connection Failed");
 				}
 
 				$postId = mysql_real_escape_string($_GET['postId']);
@@ -67,17 +66,15 @@
 				$maxResults = 50;
 				for($i = 0; $i < $maxResults; $i++) {
 					$currentPost = $result->fetch_assoc();
-					$currentPostId = $currentPost["postid"];
 					if(isset($currentPost)){
-						echo "<div class='post-block' value='$currentPostId'>" .
-						$currentPost["title"] . " <a href='ViewPost.php?postId='$currentPostId'>
-						 View</a></div>";
+						$title = $currentPost["title"];
+						$currentPostId = $currentPost["postid"];
+						echo "<div class='post-block' value='$currentPostId'>$title<a href='Post.php?postId=$currentPostId'>View</a></div>";
 					}
 				} 
 			?>
 		</div>
 
 	</body>
-
 
 </html>
