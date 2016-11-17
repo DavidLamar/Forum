@@ -24,6 +24,7 @@
 	//ADD VERIFICATION
 		function verify(){
 			var pass = document.getElementById('login').elements[1].value;
+			var match = document.getElementById('login').elements[2].value;
 			var special = pass.search(/[!@#$%^&*()]/g);
 			var numeral = pass.search(/[0-9]/g);
 			/*Password must be greater than 5 characters, with at least
@@ -34,7 +35,13 @@
 				"contain at least one numeral and one special character.");
 				return false;
 			} else {
-				return true;
+				if (pass == match) {
+					return true;
+				}
+				else {
+					alert("Please enter the same password twice.");
+					return false;
+				}
 			}
 		}
 	</script>
