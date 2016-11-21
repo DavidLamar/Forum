@@ -39,11 +39,33 @@
 			box-sizing: border-box;
 		}
 
+		.button {
+			display: inline-block;
+			margin: 5px;
+			padding: 5px;
+			border: 2px solid black;
+		}
+	
+		.button.disabled {
+			border: 2px solid gray;
+		}
+
+		.button.selected {
+			border: 2px solid white;
+		}
+
 	</style>
 
 	<body>
 		<?php include 'Header.php'; ?>
 		<div class="content">
+			<div class='locaity-select'>
+				<div class="button disabled">Local</div>
+				<div class="button selected">Global</div>
+			</div>
+
+			<hr>			
+
 			<div class='nav-bar'>
 				<a href="MakePost.php">Make Post</a>
 			</div>

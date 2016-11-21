@@ -30,6 +30,7 @@
 		$_SESSION["username"] = $username;
 		$_SESSION["user_first_name"] = $user["first_name"];
 		$_SESSION["user_last_name"] = $user["last_name"];
+		$_SESSION["location_pref"] = "global";
 		header("Location: http://www.cis.gvsu.edu/~lamard/Forum");	
 	} else {
 		echo "Invalid username and password";

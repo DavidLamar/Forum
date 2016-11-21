@@ -1,0 +1,39 @@
+<html>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<body>
+		<script>
+			var asd = function() {
+				console.log("Got here");
+				if (navigator.geolocation) {
+        				navigator.geolocation.getCurrentPosition(display);
+    				} else {
+					console.log("No Location Info");
+				}
+			}
+		
+			var display = function(position) {
+				console.log("Got here 1");
+				var latitude = position.coords.latitude;
+				var longitude = position.coords.longitude;
+				var link = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + "," + longitude + "&key=AIzaSyCbiCD9tKmXS4xzxbDO3LJmvbjIZV6HuEE";
+				console.log("Got here");
+				$.ajax({url: link,
+					success: function(result){
+        					showGeoStuff(result);
+    					},
+					error: function(){
+						console.log("Noo =(");
+					}
+				});
+			}
+
+			var showGeoStuff = function(geoInfo) {
+				console.log(geoInfo);
+			}
+
+			asd();
+		</script>
+		wtf
+	<body>
+
+</html>
