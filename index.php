@@ -127,7 +127,7 @@
 					if(isset($currentPost)){
 						$title = $currentPost["title"];
 						$currentPostId = $currentPost["postid"];
-						echo "<div class='post-block' value='$currentPostId'>$title<a href='Post.php?postId=$currentPostId'>View</a></div>";
+						echo "<div class='post-block' value='$currentPostId'><a href='Post.php?postId=$currentPostId'>$title</a></div>";
 					}
 				} 
 			?>

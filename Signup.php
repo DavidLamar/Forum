@@ -57,20 +57,20 @@
 
 	</body>
 	<script>
-	//ADD VERIFICATION
 		function verify(){
 			var pass = document.getElementById('login').elements[1].value;
 			var match = document.getElementById('login').elements[2].value;
-			var special = pass.search(/[!@#$%^&*()]/g);
-			var numeral = pass.search(/[0-9]/g);
 			/*Password must be greater than 5 characters, with at least
 			one special character and one number. Here we must use regular
 			expressions to check the input.*/
+			var special = pass.search(/[!@#$%^&*()]/g);
+			var numeral = pass.search(/[0-9]/g);
 			if (special == -1 || numeral == -1 || pass.length < 6) { 
 				alert("Password must be longer than 5 characters and must "+
 				"contain at least one numeral and one special character.");
 				return false;
 			} else {
+				//May want to write string compare function for this
 				if (pass == match) {
 					return true;
 				}
