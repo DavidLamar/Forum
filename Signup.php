@@ -58,8 +58,8 @@
 	</body>
 	<script>
 		function verify(){
-			var pass = document.getElementById('login').elements[1].value;
-			var match = document.getElementById('login').elements[2].value;
+			var pass = document.getElementById('signup').elements[1].value;
+			var match = document.getElementById('signup').elements[2].value;
 			/*Password must be greater than 5 characters, with at least
 			one special character and one number. Here we must use regular
 			expressions to check the input.*/
