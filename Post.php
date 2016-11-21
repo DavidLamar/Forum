@@ -40,24 +40,23 @@
 		<hr>
 		<?php
 			$servername = "cis.gvsu.edu";
-                        $dbusername = "lamard";
-                        $dbpassword = "lamard7742";
-                        $dbname = "lamard";
+			$dbusername = "lamard";
+			$dbpassword = "lamard7742";
+			$dbname = "lamard";
 
-                        $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
-                        if($conn->connect_error) {
-                                die("Connection Failed");
-                        }
+			$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+			if($conn->connect_error) {
+				die("Connection Failed");
+			}
 
-                        $commentSelect = "SELECT * FROM comment WHERE postId=$postId ORDER BY date DESC;";
-                        $result = $conn->query($commentSelect);
+			$commentSelect = "SELECT * FROM comment WHERE postId=$postId ORDER BY date DESC;";
+			$result = $conn->query($commentSelect);
 			$comment = $result->fetch_assoc();
-                        while(isset($comment)) {
-                                $currentComment = $comment["content"];
-                                echo "<div>$currentComment</div>";
+			while(isset($comment)) {
+				$currentComment = $comment["content"];
+				echo "<div>$currentComment</div>";
 				$comment = $result->fetch_assoc();
-                        }
-
+            }
 		?>
 	</body>
 
