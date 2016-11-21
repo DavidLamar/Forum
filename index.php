@@ -56,6 +56,42 @@
 
 	</style>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+		var userLocation;
+
+		var getFormattedAddress = function() {
+			return userLocation.results[5].formatted_address;
+		}
+
+		var getLocation = function() {
+                        if (navigator.geolocation) {
+                                navigator.geolocation.getCurrentPosition(getUserLocationInfo);
+                        } else {
+                                console.log("No Location Info");
+                        }
+                }
+		
+		var getUserLocationInfo = function(position) {
+                        var latitude = position.coords.latitude;
+                        var longitude = position.coords.longitude;
+                        var link = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + "," + longitude + "&key=AIzaSyCbiCD9tKmXS4xzxbDO3LJmvbjIZV6HuEE";
+                        $.ajax({url: link,
+                                success: function(result){
+                                userLocation = result;
+                                },
+                                error: function(){
+                                    console.log("Unable to retrieve location information");
+                                }
+                        });
+                }
+
+		$(document).ready(function() {
+			getLocation();
+		});
+
+	</script>
+
 	<body>
 		<?php include 'Header.php'; ?>
 		<div class="content">
