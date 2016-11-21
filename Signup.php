@@ -23,6 +23,7 @@
                         $.ajax({url: link,
                                 success: function(result){
                                 userLocation = result;
+                                getFormattedAddress();
                                 },
                                 error: function(){
                                     console.log("Unable to retrieve location information");
@@ -32,7 +33,6 @@
 
                 $(document).ready(function() {
                         getLocation();
-			getFormattedAddress();
                 });
 	</script>
 	<body>

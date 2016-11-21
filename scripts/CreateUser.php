@@ -4,6 +4,7 @@
 		<?php
 			$username = $_POST["username"];
 			$password = $_POST["password"];
+			$location = mysql_real_escape_string($_POST["location"]);
 
 			$servername = "cis.gvsu.edu";
 			$dbusername = "lamard";
@@ -26,7 +27,8 @@
 			for($i = 0; $i < 100; $i++){
 				$hash = sha1($hash);
 			}
-			$createUser = "INSERT INTO users VALUES ('" . mysql_real_escape_string($username) . "', '', '', '" . $hash . "');";
+			$createUser = "INSERT INTO users VALUES ('" . mysql_real_escape_string($username) . "', '', '', '" . $hash . "', '$location');";
+			echo $createUser;
 			$conn->query($createUser);
 			$conn->query("COMMIT;");
 			
