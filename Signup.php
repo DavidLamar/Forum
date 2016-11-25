@@ -46,7 +46,7 @@
 					Password: <input type="password" id="password"/>
 				</div>
 				<div>
-					Re-enter Password: <input type="password" id="verify" />
+					Re-enter Password: <input type="password" id="verify"/>
 				</div>
 				<input type="hidden" name="location" value=""></input>
 			</div>
@@ -58,8 +58,8 @@
 	</body>
 	<script>
 		function verify(){
-			var pass = document.getElementById('password').elements[0].value;
-			var match = document.getElementById('verify').elements[0].value;
+			var pass = document.getElementById('password').value;
+			var match = document.getElementById('verify').value;
 			/*Password must be greater than 5 characters, with at least
 			one special character and one number. Here we must use regular
 			expressions to check the input.*/
@@ -79,6 +79,7 @@
 					return false;
 				}
 			}
+			return false;
 		}
 	</script>
 
