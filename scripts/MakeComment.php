@@ -29,5 +29,5 @@
         $updateCurrentComment = "UPDATE admin SET currentComment = " . $nextComment . " WHERE name = 'Admin';";
         $conn->query($updateCurrentComment);
         $conn->query("COMMIT;");
-	header("Location: http://www.cis.gvsu.edu/~lamard/Forum/Post.php?postId=$postId");
+	header("Location: /~lamard/Forum/Post.php?postId=$postId");
 ?>

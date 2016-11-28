@@ -28,11 +28,10 @@
 				$hash = sha1($hash);
 			}
 			$createUser = "INSERT INTO users VALUES ('" . mysql_real_escape_string($username) . "', '', '', '" . $hash . "', '$location');";
-			echo $createUser;
 			$conn->query($createUser);
 			$conn->query("COMMIT;");
 			
-			echo "User created, navigate back and login (temporary)";
+			header("Location: https://www.cis.gvsu.edu/~lamard/Forum");
 		?>
 
 	</body>

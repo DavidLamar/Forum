@@ -18,5 +18,5 @@
         $conn->query($updateUser);
 	$conn->query("COMMIT;");
 		
-	header("Location: http://www.cis.gvsu.edu/~lamard/Forum/Account.php");
+	header("Location: /~lamard/Forum/Account.php");
 ?>

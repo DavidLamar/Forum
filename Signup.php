@@ -5,7 +5,7 @@
 
                 var getFormattedAddress = function() {
 			var location = document.getElementsByName("location")[0];
-                        location.value = userLocation.results[5].formatted_address;
+                        location.value = userLocation.results[4].formatted_address;
                 }
 
                 var getLocation = function() {

@@ -29,16 +29,16 @@
 	$title = mysql_real_escape_string($_POST["post-title"]);
 	$content = mysql_real_escape_string($_POST["post-content"]);
 	$poster = mysql_real_escape_string($_SESSION["username"]);
+	$location = mysql_real_escape_string($_SESSION["location"]);
 	$date = getDate();
 	$date = $date[0];
 
 	if(!isset($username) || !isset($_SESSION["logged_in"])){
-		//header("Location: http://www.cis.gvsu.edu/~lamard/Forum/Login.php");
+		header("Location: /~lamard/Forum/Login.php");
 		exit();	
 	}
-	
 
-	$makePost = "INSERT INTO post VALUES($currentPost, '$poster', '$title', '$content', $date);";
+	$makePost = "INSERT INTO post VALUES($currentPost, '$poster', '$title', '$content', $date, '$location');";
 	$conn->query($makePost);
 	$conn->query("COMMIT;");
 
@@ -48,7 +48,7 @@
 	$conn->query($updateCurrentPost);
 	$conn->query("COMMIT;");
 
-	header("Location: http://www.cis.gvsu.edu/~lamard/Forum/Post.php?postId=$currentPost");	
+	header("Location: /~lamard/Forum/Post.php?postId=$currentPost");	
 ?>
 
 </body>

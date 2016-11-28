@@ -1,5 +1,42 @@
 <html>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+		var userLocation;
 
+                var getFormattedAddress = function() {
+                        var location = document.getElementsByName("location")[0];
+			var disp = document.getElementById("location-display");
+                        location.value = userLocation.results[4].formatted_address;
+			disp.innerHTML = userLocation.results[4].formatted_address;
+                }
+
+                var getLocation = function() {
+                        if (navigator.geolocation) {
+                                navigator.geolocation.getCurrentPosition(getUserLocationInfo);
+                        } else {
+                                console.log("No Location Info");
+                        }
+                }
+
+                var getUserLocationInfo = function(position) {
+                        var latitude = position.coords.latitude;
+                        var longitude = position.coords.longitude;
+                        var link = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + "," + longitude + "&key=AIzaSyCbiCD9tKmXS4xzxbDO3LJmvbjIZV6HuEE";
+                        $.ajax({url: link,
+                                success: function(result){
+                                userLocation = result;
+                                getFormattedAddress();
+                                },
+                                error: function(){
+                                    console.log("Unable to retrieve location information");
+                                }
+                        });
+                }
+
+                $(document).ready(function() {
+                        getLocation();
+                });
+	</script>
 	<body>
 		<?php
 			include "Header.php";
@@ -25,11 +62,13 @@
 				if(isset($user)){
 					$firstName = $user["first_name"];
 					$lastName = $user["last_name"];
+					$loc = $user["addr"];
 					echo "<label>$username</label><hr>";
 					echo "<div><label>First Name: </label> $firstName </div>";
-					echo "<div><label>Last Name: </label> $lastName</div><br><hr>";
+					echo "<div><label>Last Name: </label> $lastName</div>";
+					echo "<div><label>Location: </label> $loc </div><br><hr>";
 				} else {
-					header("Location: http://http://www.cis.gvsu.edu/~lamard/Forum/Login.php");
+					header("Location: /~lamard/Forum/Login.php");
 					exit();
 				}
 			?>
@@ -65,6 +104,18 @@
 				<input type='text' name='lastName'></input>
 			</div>
 			<button type='submit'>Save</button>
+		</form>
+
+		<form method="post" action="/~lamard/Forum/scripts/UpdateLocation.php">
+			<label>Location:</label>
+			<hr>
+			<div>
+				*Your locaton will remain the place where you created your account. If you change it here, it will remain the same location until changed again. This is the location used to access your local feed.
+				<br>
+				<input name="location" type="hidden"></input>
+				<label>New Location: </label><span id="location-display"></span>
+			</div>
+			<button type="submit">Update Location</button>
 		</form>
 	</body>
 	<script>
