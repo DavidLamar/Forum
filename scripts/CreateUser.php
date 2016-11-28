@@ -2,7 +2,7 @@
 	<body>
 
 		<?php
-			$username = $_POST["username"];
+			$username = mysql_real_escape_string($_POST["username"]);
 			$password = $_POST["password"];
 			$location = mysql_real_escape_string($_POST["location"]);
 
@@ -16,7 +16,8 @@
 				die("Connection Failed");
 			}
 
-			$selectUser = "SELECT * FROM users WHERE username = '" . mysql_real_escape_string($username) . "';";
+			$selectUser = "SELECT * FROM users WHERE username = '$username';";
+			echo $selectUser;
 			$results = $conn->query($selectUser);
 				
 			if($results->num_rows > 0){

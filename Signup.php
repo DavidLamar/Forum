@@ -40,10 +40,10 @@
 		<form id="signup" method="POST" action="/~lamard/Forum/scripts/CreateUser.php">
 			<div>
 				<div>
-					Username: <input type="text" id="username"/>
+					Username: <input type="text" id="username" name="username"/>
 				</div>
 				<div>
-					Password: <input type="password" id="password"/>
+					Password: <input type="password" id="password" name="password"/>
 				</div>
 				<div>
 					Re-enter Password: <input type="password" id="verify"/>
