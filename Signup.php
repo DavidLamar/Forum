@@ -1,13 +1,17 @@
 <html>
+
+<head>
+		<title>Sign Up!</title>
+		<link href="forum.css" rel="stylesheet" type="text/css">
+	</head>
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script>
 		var userLocation;
-
                 var getFormattedAddress = function() {
 			var location = document.getElementsByName("location")[0];
                         location.value = userLocation.results[4].formatted_address;
                 }
-
                 var getLocation = function() {
                         if (navigator.geolocation) {
                                 navigator.geolocation.getCurrentPosition(getUserLocationInfo);
@@ -30,31 +34,33 @@
                                 }
                         });
                 }
-
                 $(document).ready(function() {
                         getLocation();
                 });
 	</script>
+	
 	<body>
 		<?php include "Header.php"?>
+		
+		<div class = "wrapper">
 		<form id="signup" method="POST" action="/~lamard/Forum/scripts/CreateUser.php">
 			<div>
-				<div>
-					Username: <input type="text" id="username" name="username"/>
+				<div class = "form_field">
+					<label>Username:</label> <input type="text" id="username" name="username"/>
 				</div>
-				<div>
-					Password: <input type="password" id="password" name="password"/>
+				<div class = "form_field">
+					<label>Password:</label> <input type="password" id="password" name="password"/>
 				</div>
-				<div>
-					Re-enter Password: <input type="password" id="verify"/>
+				<div class = "form_field">
+					<label>Re-enter Password:</label> <input type="password" id="verify"/>
 				</div>
 				<input type="hidden" name="location" value=""></input>
 			</div>
 			<div>
-				<button type="submit" onclick="return verify()">Create Account</button>
+				<button type="submit" class = "submit_button" onclick="return verify()">Create Account</button>
 			</div>
 		</form>
-
+		<div>
 	</body>
 	<script>
 		function verify(){
@@ -82,5 +88,4 @@
 			return false;
 		}
 	</script>
-
 </html>
