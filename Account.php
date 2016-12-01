@@ -1,15 +1,17 @@
 <html>
+	<head>
+	<title>Account Information</title>
+	<link href="forum.css" rel="stylesheet" type="text/css">
+	</head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script>
 		var userLocation;
-
                 var getFormattedAddress = function() {
                         var location = document.getElementsByName("location")[0];
 			var disp = document.getElementById("location-display");
                         location.value = userLocation.results[4].formatted_address;
 			disp.innerHTML = userLocation.results[4].formatted_address;
                 }
-
                 var getLocation = function() {
                         if (navigator.geolocation) {
                                 navigator.geolocation.getCurrentPosition(getUserLocationInfo);
@@ -17,7 +19,6 @@
                                 console.log("No Location Info");
                         }
                 }
-
                 var getUserLocationInfo = function(position) {
                         var latitude = position.coords.latitude;
                         var longitude = position.coords.longitude;
@@ -32,7 +33,6 @@
                                 }
                         });
                 }
-
                 $(document).ready(function() {
                         getLocation();
                 });
@@ -49,7 +49,6 @@
 				$dbusername = "lamard";
 				$dbpassword = "lamard7742";
 				$dbname = "lamard";
-
 				$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 				if($conn->connect_error) {
 						die("Connection Failed");
@@ -73,19 +72,19 @@
 				}
 			?>
 		</div>
-
+<div class = "wrapper_login">
 		<form id="password" method="post" action="/~lamard/Forum/scripts/ChangePassword.php">
 			<label>Change Password:</label>
 			<hr>
-			<div>
+			<div class = "form_field">
 				<label>Current Password:</label>
 				<input type='password' name='current'></input>
 			</div>
-			<div>
-				<label>New Password:</label>
+			<div class = "form_field">
+				<label >New Password:</label>
 				<input type='password' name='new'></label>
 			</div>
-			<div>
+			<div class = "form_field">
 				<label>Confirm New Password:</label>
 				<input type='password' name='confirm-new'></input>
 			</div>
@@ -93,13 +92,13 @@
 		</form>
 
 		<form method="post" action="/~lamard/Forum/scripts/UpdateAccountInfo.php">
-			<label>Account Information:</div>
+			<label>Account Information:</label><!--this said div before-->
 			<hr>
-			<div>
+			<div class = "form_field">
 				<label>First Name: </label>
 				<input type='text' name='firstName'></input>
 			</div>
-			<div>
+			<div class = "form_field">
 				<label>Last Name:</label>
 				<input type='text' name='lastName'></input>
 			</div>
@@ -117,6 +116,7 @@
 			</div>
 			<button type="submit">Update Location</button>
 		</form>
+		</div>
 	</body>
 	<script>
 		//TODO: verify current password
