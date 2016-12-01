@@ -1,19 +1,20 @@
 <?php include 'Header.php'; ?>
 
 <html>
-
+<head>
+		<title>Comment</title>
+		<link href="forum.css" rel="stylesheet" type="text/css">
+	</head>
 	<body>
 		<?php
 			$servername = "cis.gvsu.edu";
 	 	       	$dbusername = "lamard";
        			$dbpassword = "lamard7742";
        			$dbname = "lamard";
-
 		        $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 	       		if($conn->connect_error) {
        	       		 	die("Connection Failed");
        			}
-
 			$postId = mysql_real_escape_string($_GET['postId']);
 			$postSelect = "SELECT * FROM post WHERE postid = $postId;";
 			$result = $conn->query($postSelect);
@@ -24,9 +25,9 @@
 			echo "<div class='title'>$title</div>
 				<div class='poster'>$poster</div>
 				<div class='content'>$content</div>";
-
 		
 		?>
+		<div class = "wrapper">
 		<hr>
 			<form action="/~lamard/Forum/scripts/MakeComment.php" method="post">
 				<div><label>Enter a comment:</label></div>
@@ -38,17 +39,16 @@
 			</form>
 
 		<hr>
+		</div>
 		<?php
 			$servername = "cis.gvsu.edu";
 			$dbusername = "lamard";
 			$dbpassword = "lamard7742";
 			$dbname = "lamard";
-
 			$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 			if($conn->connect_error) {
 				die("Connection Failed");
 			}
-
 			$commentSelect = "SELECT * FROM comment WHERE postId=$postId ORDER BY date DESC;";
 			$result = $conn->query($commentSelect);
 			$comment = $result->fetch_assoc();
