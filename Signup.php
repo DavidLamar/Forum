@@ -57,7 +57,7 @@
 
 	</body>
 	<script>
-		function verify(){
+		var verify = function() {
 			var pass = document.getElementById('password').value;
 			var match = document.getElementById('verify').value;
 			/*Password must be greater than 5 characters, with at least

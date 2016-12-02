@@ -85,11 +85,6 @@
 				localPage.classList.remove("selected");
 			}
 		};
-
-		$(document).ready(function() {
-			getLocation();
-		});
-
 	</script>
 
 	<body>
