@@ -8,28 +8,28 @@
                 padding: 10px;
                 width: 100%;
                 height: 70px;
-                background-color: red;
+                background-color: #496287;
         }
-
         body {
                 margin: 0;
                 padding: 0;
         }
-
         .logo-container {
                 position: absolute;
                 left: 10;
                 bottom: 0;
         }
-
         .user-info {
-                background-color: green;
+                background-color: #e7e4df;
                 padding: 10px;
                 position: fixed;
                 right: 0;
                 top: 0;
+				
+				/*#e7e4df #496287 #3b4359 #f7e5d5 #bfbfc3*/
         }
-
+		
+		
 </style>
 
 <div class='header'>
