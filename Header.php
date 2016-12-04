@@ -1,6 +1,8 @@
 <?php
 	session_start();
 ?>
+<link href="forum.css" rel="stylesheet" type="text/css">
+
 <style>
 	.header {
         	box-sizing: border-box;
@@ -8,7 +10,7 @@
                 padding: 10px;
                 width: 100%;
                 height: 70px;
-                background-color: #496287;
+                background-color: #ffffff;
         }
         body {
                 margin: 0;
@@ -25,17 +27,13 @@
                 position: fixed;
                 right: 0;
                 top: 0;
-				
-				/*#e7e4df #496287 #3b4359 #f7e5d5 #bfbfc3*/
-        }
-		
-		
+		}  
 </style>
 
 <div class='header'>
         <div class='logo-container'>
         	<span class='logo'>
-			<a href='/~lamard/Forum'>Logo</a>
+			<h1><a href='/~lamard/Forum'>CIS 371 Forum</a></h1>
 		</span>
         </div>
         <div class='user-info'>
