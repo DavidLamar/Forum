@@ -1,8 +1,9 @@
 <html>
 	<head>
-	<title>Account Information</title>
-	<link href="forum.css" rel="stylesheet" type="text/css">
+		<title>Account Information</title>
+		<link href="forum.css" rel="stylesheet" type="text/css">
 	</head>
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script>
 		var userLocation;
@@ -37,87 +38,90 @@
                         getLocation();
                 });
 	</script>
+	
 	<body>
 		<?php
 			include "Header.php";
 		?>
-
-		<div>
-			<?php
-				session_start();
-				$servername = "cis.gvsu.edu";
-				$dbusername = "lamard";
-				$dbpassword = "lamard7742";
-				$dbname = "lamard";
-				$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
-				if($conn->connect_error) {
-						die("Connection Failed");
-				}
-				
-				$username = mysql_real_escape_string($_SESSION["username"]);
-				$selectUser = "SELECT * FROM users WHERE username='$username';";
-				$result = $conn->query($selectUser);
-				$user = $result->fetch_assoc();
-				if(isset($user)){
-					$firstName = $user["first_name"];
-					$lastName = $user["last_name"];
-					$loc = $user["addr"];
-					echo "<label>$username</label><hr>";
-					echo "<div><label>First Name: </label> $firstName </div>";
-					echo "<div><label>Last Name: </label> $lastName</div>";
-					echo "<div><label>Location: </label> $loc </div><br><hr>";
-				} else {
-					header("Location: /~lamard/Forum/Login.php");
-					exit();
-				}
-			?>
-		</div>
-<div class = "wrapper_login">
-		<form id="password" method="post" action="/~lamard/Forum/scripts/ChangePassword.php">
-			<label>Change Password:</label>
-			<hr>
-			<div class = "form_field">
-				<label>Current Password:</label>
-				<input type='password' name='current'></input>
-			</div>
-			<div class = "form_field">
-				<label >New Password:</label>
-				<input type='password' name='new'></label>
-			</div>
-			<div class = "form_field">
-				<label>Confirm New Password:</label>
-				<input type='password' name='confirm-new'></input>
-			</div>
-			<button type='submit' onclick="return verify()">Save</button>
-		</form>
-
-		<form method="post" action="/~lamard/Forum/scripts/UpdateAccountInfo.php">
-			<label>Account Information:</label><!--this said div before-->
-			<hr>
-			<div class = "form_field">
-				<label>First Name: </label>
-				<input type='text' name='firstName'></input>
-			</div>
-			<div class = "form_field">
-				<label>Last Name:</label>
-				<input type='text' name='lastName'></input>
-			</div>
-			<button type='submit'>Save</button>
-		</form>
-
-		<form method="post" action="/~lamard/Forum/scripts/UpdateLocation.php">
-			<label>Location:</label>
-			<hr>
+		
+		<div class = "wrapper">
 			<div>
-				*Your locaton will remain the place where you created your account. If you change it here, it will remain the same location until changed again. This is the location used to access your local feed.
-				<br>
-				<input name="location" type="hidden"></input>
-				<label>New Location: </label><span id="location-display"></span>
+				<?php
+					session_start();
+					$servername = "cis.gvsu.edu";
+					$dbusername = "lamard";
+					$dbpassword = "lamard7742";
+					$dbname = "lamard";
+					$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+					if($conn->connect_error) {
+							die("Connection Failed");
+					}
+					
+					$username = mysql_real_escape_string($_SESSION["username"]);
+					$selectUser = "SELECT * FROM users WHERE username='$username';";
+					$result = $conn->query($selectUser);
+					$user = $result->fetch_assoc();
+					if(isset($user)){
+						$firstName = $user["first_name"];
+						$lastName = $user["last_name"];
+						$loc = $user["addr"];
+						echo "<h1>$username</h1><hr>";
+						echo "<div><h2>First Name: </h2> $firstName </div>";
+						echo "<div><h2>Last Name: </h2> $lastName</div>";
+						echo "<div><h3>Location: </h3> $loc </div><br><hr>";
+					} else {
+						header("Location: /~lamard/Forum/Login.php");
+						exit();
+					}
+				?>
 			</div>
-			<button type="submit">Update Location</button>
-		</form>
+
+			<form id="password" method="post" action="/~lamard/Forum/scripts/ChangePassword.php">
+				<h2>Change Password</h2>
+				<hr>
+				<div class = "form_field">
+					<label>Current Password:</label>
+					<input type='password' name='current'></input>
+				</div>
+				<div class = "form_field">
+					<label >New Password:</label>
+					<input type='password' name='new'></label>
+				</div>
+				<div class = "form_field">
+					<label>Confirm New Password:</label>
+					<input type='password' name='confirm-new'></input>
+				</div>
+				<button type='submit' onclick="return verify()">Save</button>
+			</form>
+
+			<form method="post" action="/~lamard/Forum/scripts/UpdateAccountInfo.php">
+				<h2>Account Information</h2>
+				<hr>
+				<div class = "form_field">
+					<label>First Name: </label>
+					<input type='text' name='firstName'></input>
+				</div>
+				<div class = "form_field">
+					<label>Last Name:</label>
+					<input type='text' name='lastName'></input>
+				</div>
+				<button type='submit'>Save</button>
+			</form>
+
+			<form method="post" action="/~lamard/Forum/scripts/UpdateLocation.php">
+				<h2> Location</h2>
+				<hr>
+				<div>
+					*Your locaton will remain the place where you created your account. If you change it here, it will remain the same location until changed again. This is the location used to access your local feed.
+					<br>
+					<input name="location" type="hidden"></input></br>
+					<label>New Location: </label><span id="location-display"></span>
+				</div></br>
+				<button type="submit">Update Location</button>
+			</form>
 		</div>
 	</body>
+	
 	<script>
 		//TODO: verify current password
 		function verify(){
