@@ -43,6 +43,7 @@
 		<?php include "Header.php"?>
 		
 		<div class = "wrapper">
+		<h1>Sign Up</h1>
 		<form id="signup" method="POST" action="/~lamard/Forum/scripts/CreateUser.php">
 			<div>
 				<div class = "form_field">
@@ -55,13 +56,13 @@
 					<label>Re-enter Password:</label> <input type="password" id="verify"/>
 				</div>
 				<input type="hidden" name="location" value=""></input>
-			</div>
+			</div></br>
 			<div>
 				<button type="submit" class = "submit_button" onclick="return verify()">Create Account</button>
 			</div>
 		</form>
-		<div>
-	</body>
+			</div>
+		</body>
 	<script>
 		var verify = function() {
 			var pass = document.getElementById('password').value;
