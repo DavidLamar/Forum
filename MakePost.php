@@ -6,6 +6,7 @@
 	<body>
 		<?php include "Header.php"?>
 		<div class = "wrapper">
+				<h1>Make Post</h1>
 		<form id="make-post" action="/~lamard/Forum/scripts/MakePost.php" method="POST">
 			<div class = "form_field">
 				<label>Title: </label>
@@ -14,7 +15,7 @@
 			<div class = "form_field">
 				<label>Post content:</label>
 				<textarea name="post-content"></textarea>
-			</div>
+			</div></br>
 			<div class = "submit_button">
 				<button type="submit">Make Post</button>
 			</div>
