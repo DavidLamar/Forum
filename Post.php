@@ -1,11 +1,14 @@
 <?php include 'Header.php'; ?>
 
 <html>
-<head>
+	<head>
 		<title>Comment</title>
 		<link href="forum.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
+	
+	<div class = "wrapper">
+		<h1>Comment</h1>
 		<?php
 			$servername = "cis.gvsu.edu";
 	 	       	$dbusername = "lamard";
@@ -27,19 +30,19 @@
 				<div class='content'>$content</div>";
 		
 		?>
-		<div class = "wrapper">
+		
 		<hr>
 			<form action="/~lamard/Forum/scripts/MakeComment.php" method="post">
 				<div><label>Enter a comment:</label></div>
 				<div>
 					<textarea width="100%" name="comment"></textarea>
-					<input type='hidden' value=<?php echo "$postId"?> name="postId"></input>
+					<input type='hidden' value=<?php echo "$postId"?> name="postId"></input></br></br>
 					<button type="submit">Post Comment</button>
 				</div>
 			</form>
 
 		<hr>
-		</div>
+		
 		<?php
 			$servername = "cis.gvsu.edu";
 			$dbusername = "lamard";
@@ -58,6 +61,7 @@
 				$comment = $result->fetch_assoc();
             }
 		?>
+		</div>
 	</body>
 
 </html>
