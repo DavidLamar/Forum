@@ -1,40 +1,27 @@
 /*Sir Wilf color theme from Adobe Color #e7e4df #496287 #3b4359 #f7e5d5 #bfbfc3 */
 /*<link href="forum.css" rel="stylesheet" type="text/css">*/	
-/*links for when the different posts are clicked, main dark border, light post boxes with shading.  */
-
-.userInput {padding: 20px 10px 10px 10px; color: #496287; font-weight: bold; max-width: 30%; float:left; margin: 10px;
-	height: auto;}
-
-#loginButton {max-width: 30%; float:right; margin: 10px;
-	height: auto;}
 
 a:link {color: #496287;}
 a:visited {color: #3b4359;}
 a:hover {color: #bfbfc3;}
 a:active {color: #f7e4df;}
 
-=
-
-
 .login {
 	background-color: #bfbfc3; 
 	border: none;
-	color: 496287;
-	padding: 16px 32px;
+	color: #496287;
+	padding: 10px 18px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
 	margin: 4px 2px;
-	/*-webkit-transition-duration: 0.4s; */
-	transition-duration: 0.4s;
 	cursor: pointer;
 }
 
 .loginEffect:hover{
 	background-color: #3b4359;
-	color: bfbfc3;
-	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+	color: #bfbfc3;
 	}
 
 html, body {overflow-x: hidden;} 
@@ -57,14 +44,14 @@ body {
 	border-radius: 10px;
 	border: 3px solid #3b4359;
 	background-color: #ffffff;
-	max-width: 500px;
-	margin: 10px 30%;
+	max-width: 750px;
+	margin: auto;
 	padding: 20px;	
 }
 
 label {
 	font-weight: bold;
-	color: #496287;
+	color: #aba3ae;;
 }
 
 .form_field {
@@ -75,7 +62,7 @@ label {
 	border-radius: 10px;
 	border: 3px solid #3b4359;
 	background-color: #ffffff;
-	max-width: 1000px;
-	margin: 10px 30%;
-	padding: 20px;	
+	max-width: 500px;
+	padding: 20px;
+	margin: auto;
 }

@@ -1,16 +1,18 @@
 <html>
+	<head>
+		<link href="forum.css" rel="stylesheet" type="text/css">
+		<title>Feed</title>
+	</head>
 	<style>
 		body {
 			margin: 0;
 			padding: 0;
 		}
-
 		.logo-container {
 			position: absolute;
 			left: 10;
 			bottom: 0;
 		}
-
 		.user-info {
 			background-color: green;
 			padding: 10px;
@@ -18,50 +20,40 @@
 			right: 0;
 			top: 0;
 		}
-
-
-
 		.content {
 			padding: 10px;
 			width: 80%;
-			background-color: gray;
 			margin: auto;
 		}
-
 		.post-block {
 			width: 100%;
 			border: 1px 3px 1px 3px;
-			border-color: black;
+			border-color: #496287;
 			border-style: solid;
 			padding: 5px;
 			margin-bottom: 2px;
 			box-sizing: border-box;
 		}
-
 		.button {
 			display: inline-block;
 			margin: 5px;
 			padding: 5px;
-			border: 2px solid black;
+			border: 2px solid #3b4359;
 			cursor: pointer;
 		}
 	
 		.button.disabled {
-			border: 2px solid gray;
-		}
-
-		.button.selected {
 			border: 2px solid white;
 		}
-
+		.button.selected {
+			border: 2px solid #bfbfc3;
+		}
 		.page {
 			display: none;
 		}
-
 		.page.selected {
 			display: block;
 		}
-
 	</style>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -88,6 +80,7 @@
 	</script>
 
 	<body>
+	<div class = "wrapper">
 		<?php include 'Header.php'; ?>
 		<div class="content">
 			<div class='locaity-select'>
@@ -107,12 +100,10 @@
 					$dbusername = "lamard";
 					$dbpassword = "lamard7742";
 					$dbname = "lamard";
-
 					$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 					if($conn->connect_error) {
 						die("Connection Failed");
 					}
-
 					$postId = mysql_real_escape_string($_GET['postId']);
 					$postSelect = "SELECT * FROM post ORDER BY postid DESC;";
 					$result = $conn->query($postSelect);
@@ -155,7 +146,7 @@
 				?>
 			</div>
 		</div>
-
+</div>
 	</body>
 
 </html>
