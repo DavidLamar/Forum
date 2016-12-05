@@ -39,7 +39,7 @@
         <div class='user-info'>
 		<?php
                         if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
-                                echo "Hello " . $_SESSION["username"] . ", <a href='/~lamard/Forum/scripts/Logout.php'>Log out?</a>";
+                                echo "Hello <a href='/~lamard/Forum/Account.php'>" . $_SESSION["username"] . "</a>, <a href='/~lamard/Forum/scripts/Logout.php'>Log out?</a>";
                         } else {
                         	echo "<a href='Login.php'>Log In</a> | <a href='Signup.php'>Sign Up</a>";
                 	}
