@@ -58,15 +58,22 @@
 				<input type="hidden" name="location" value=""></input>
 			</div></br>
 			<div>
-				<button type="submit" class = "submit_button" onclick="return verify()">Create Account</button>
+				<button type="submit" class = "submit_button" onclick="return confirm()">Create Account</button>
 			</div>
 		</form>
 			</div>
 		</body>
 	<script>
-		var verify = function() {
-			var pass = document.getElementById('password').value;
-			var match = document.getElementById('verify').value;
+		function confirm(){
+			var name = document.getElementById('signup').elements[0].value;
+            var pass = document.getElementById('signup').elements[1].value;
+			var match = document.getElementById('signup').elements[2].value;
+			
+			// User must have entered a username.
+            if (!name) {
+            	alert("Please enter a username");
+                return false;
+            }
 			/*Password must be greater than 5 characters, with at least
 			one special character and one number. Here we must use regular
 			expressions to check the input.*/
@@ -77,7 +84,6 @@
 				"contain at least one numeral and one special character.");
 				return false;
 			} else {
-				//May want to write string compare function for this
 				if (pass == match) {
 					return true;
 				}

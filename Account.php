@@ -123,7 +123,6 @@
 	</body>
 	
 	<script>
-		//TODO: verify current password
 		function verify(){
 			var pass = document.getElementById('password').elements[1].value;
 			var match = document.getElementById('password').elements[2].value;
